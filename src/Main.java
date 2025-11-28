@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 //        exam01();
 //        exam02();
-        exam03();
+//        exam03();
+        exam04();
     }
 
 
@@ -30,6 +32,7 @@ public class Main {
             System.out.println(article.id);
         }
     }
+
     static void exam02() {
         ArrayList articles = new ArrayList();   //ArrayList
 //        articles.add(articles);               //Object는 모든 타입을 받을 수 있음
@@ -51,6 +54,7 @@ public class Main {
             System.out.println();
         }
     }
+
     static void exam03() {
         ArrayList<Article> articles = new ArrayList<>();  //제너릭 사용 --> 'E' Article 지정       articles.add(new Article());
         articles.add(new Article());
@@ -68,6 +72,14 @@ public class Main {
 //            System.out.println(article.id);
 //        }
 
+    }
+    static void exam04(){
+        List<Article> articles = new ArrayList<>();  //제너릭 사용 --> 'E' Article 지정       articles.add(new Article());
+        articles.add(new Article());
+        articles.add(new Article());
+        articles.add(new Article());
+        articles.add(new Article());
+        articles.add(new Article());
     }
 
 }
