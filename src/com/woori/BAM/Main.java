@@ -21,6 +21,9 @@ public class Main {
                 System.out.println("명령어를 입력해 주세요");
                 continue;
             }
+            if (cmd.equals("exit")) {
+                    break;
+            }
 
             if (cmd.equals("article list")) {
                 if (articles.size() == 0) {
@@ -28,10 +31,10 @@ public class Main {
                     continue;
                 }
                 System.out.println("번호  |  제목");
-                for (int i = 0; i < articles.size(); i++) {
+                for (int i = articles.size()-1; i >= 0; i--) {
                     Article article = articles.get(i);
                     System.out.printf("%d  |  %s \n", article.id, article.title);
-                    continue;
+
                 }
             } else if (cmd.equals("article write")) {
                 System.out.print("제목 : ");
@@ -75,9 +78,6 @@ public class Main {
                 System.out.println("존재하지 않는 명령어 입니다");
             }
 
-            if (cmd.equals("exit")) {
-                    break;
-            }
         }
         System.out.println("== 프로그램 종료 ==");
     }
@@ -88,4 +88,5 @@ class Article {
     int id;
     String title;
     String body;
+
 }
