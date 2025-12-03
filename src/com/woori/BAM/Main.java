@@ -4,8 +4,9 @@ package com.woori.BAM;
 import java.util.*;
 
 public class Main {
-        static int lastArticleID = 1;       //마지막 article 번호 저장용 사용
-        static List<Article> articles = new ArrayList<>();  // 변수 articles 의 타입은 --> 제너릭 <article>
+    static int lastArticleID = 1;       //마지막 article 번호 저장용 사용
+    static List<Article> articles = new ArrayList<>();  // 변수 articles 의 타입은 --> 제너릭 <article>
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("== 프로그램 시작 ==");
@@ -27,7 +28,7 @@ public class Main {
                     System.out.println("게시글이 없습니다");
                     continue;
                 }
-                System.out.println("번호  |   제목    |    내용   |    시간     |      조회수");
+                System.out.println("번호  |   제목    |    내용   |            시간             |      조회수");
                 for (int i = articles.size() - 1; i >= 0; i--) {    //articles 역순으로 출력
                     Article article = articles.get(i);
                     System.out.printf("%d    |    %s   |    %s     |      %s      |       %d\n", article.id, article.title, article.body, article.regDate, article.click);
@@ -104,8 +105,8 @@ public class Main {
                 foundArticle.title = chTitle;
                 System.out.print("수정할 내용: ");
                 String chBody = sc.nextLine().trim();
-                foundArticle.body= chBody;
-                System.out.println(id+"번 게시물이 수정되었습니다.");
+                foundArticle.body = chBody;
+                System.out.println(id + "번 게시물이 수정되었습니다.");
 
             } else if (cmd.startsWith("article delete")) {
                 String[] cmdBits = cmd.split(" ");
@@ -136,21 +137,21 @@ public class Main {
 
 
             } else {
-                    System.out.println("존재하지 않는 명령어 입니다");
+                System.out.println("존재하지 않는 명령어 입니다");
             }
         }
         System.out.println("== 프로그램 종료 ==");
     }
-    static void product(){
-        Article ar1=new Article(lastArticleID++, "제목1", "내용1", Util.getDateStr(), 10);
-        articles.add(ar1);
-        Article ar2=new Article(lastArticleID++, "제목2", "내용2", Util.getDateStr(), 20);
-        articles.add(ar2);
-        Article ar3=new Article(lastArticleID++, "제목3", "내용3", Util.getDateStr(), 30);
-        articles.add(ar3);
+
+    static void product() {
+        for (int i =1; i<=500; i++) {
+            Article ar1 = new Article(lastArticleID++, "제목"+i, "내용"+i, Util.getDateStr(), i);
+            articles.add(ar1);
+        }
 
     }
 }
+
 class Article {
     int id;
     String title;
@@ -158,7 +159,7 @@ class Article {
     String regDate;
     int click;
 
-    public Article(int lastArticleID, String title, String body,String regDate,int click) {  //생성자를 통해서 초기화 작업
+    public Article(int lastArticleID, String title, String body, String regDate, int click) {  //생성자를 통해서 초기화 작업
         this.id = lastArticleID;
         this.title = title;
         this.body = body;
