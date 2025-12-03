@@ -4,12 +4,13 @@ package com.woori.BAM;
 import java.util.*;
 
 public class Main {
+        static int lastArticleID = 1;       //마지막 article 번호 저장용 사용
+        static List<Article> articles = new ArrayList<>();  // 변수 articles 의 타입은 --> 제너릭 <article>
     public static void main(String[] args) {
-        System.out.println("== 프로그램 시작 ==");
         Scanner sc = new Scanner(System.in);
-        int lastArticleID = 1;       //마지막 article 번호 저장용 사용
-        List<Article> articles = new ArrayList<>();  // 변수 articles 의 타입은 --> 제너릭 <article>
-        // ArrayList --> List를 구현하는 구현 class
+        System.out.println("== 프로그램 시작 ==");
+        product();
+
 
         while (true) {
             System.out.print("명령어) ");
@@ -67,7 +68,7 @@ public class Main {
                     System.out.printf("%d번 게시물이 존재하지 않습니다\n", id);
                     continue;
                 }
-                foundArticle.click++;
+                foundArticle.increaseViewCnt();
                 System.out.println("번호 : " + foundArticle.id);
                 System.out.println("날짜 : " + foundArticle.regDate);
                 System.out.println("제목 : " + foundArticle.title);
@@ -140,6 +141,15 @@ public class Main {
         }
         System.out.println("== 프로그램 종료 ==");
     }
+    static void product(){
+        Article ar1=new Article(lastArticleID++, "제목1", "내용1", Util.getDateStr(), 10);
+        articles.add(ar1);
+        Article ar2=new Article(lastArticleID++, "제목2", "내용2", Util.getDateStr(), 20);
+        articles.add(ar2);
+        Article ar3=new Article(lastArticleID++, "제목3", "내용3", Util.getDateStr(), 30);
+        articles.add(ar3);
+
+    }
 }
 class Article {
     int id;
@@ -155,4 +165,9 @@ class Article {
         this.regDate = regDate;
         this.click = click;
     }
+
+    void increaseViewCnt() {
+        this.click++;
+    }
 }
+
